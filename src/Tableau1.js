@@ -6,6 +6,11 @@ class Tableau1 extends Phaser.Scene {
         this.load.image('carre', 'Asset/carre.png')
         // cercle
         this.load.image('cercle', 'Asset/cercle.png')
+        // barre haut
+        this.load.image('barre','Asset/barre.png')
+        // bg
+        this.load.image('ville','Asset/ville.png')
+
     }
 
     create() {
@@ -14,16 +19,32 @@ class Tableau1 extends Phaser.Scene {
         this.hauteur = 500
         this.largeur = 1000
 
+
+        // bg
+
+        this.ville = this.add.image(0,0,'ville').setOrigin(0,0);
+        this.ville.setAlpha(0.2)
+
+
         // Barre du haut
         this.haut = this.physics.add.image(0, 0,'carre').setOrigin(0, 0);
         this.haut.setDisplaySize(this.largeur,20)
         this.haut.body.setAllowGravity(false)
         this.haut.setImmovable(true)
+        // barre haut skin
+        this.barre = this.add.image(0,0,'barre').setOrigin(0,0);
+
+
         // Barre du bas
         this.bas = this.physics.add.image(0, this.hauteur-20,'carre').setOrigin(0,0);
         this.bas.setDisplaySize(this.largeur,20)
         this.bas.body.setAllowGravity(false)
         this.bas.setImmovable(true)
+
+        // barre bas skin
+
+        this.barreB = this.add.image(0,this.hauteur-20,'barre').setOrigin(0,0);
+        this.barreB.setFlipX(true)
         // Balle
         this.balle = this.physics.add.image(this.largeur/2, this.hauteur/2,'cercle').setOrigin(0,0);
         this.balle.setDisplaySize(20,20)
